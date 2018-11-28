@@ -49,7 +49,7 @@ class Prestamo(object):
         self.agregar_sueldo(s)
         self.agregar_monto_de_prestamo(m)
         self.agregar_interes(i);
-        self.agregar_tiempor_interes(t)
+        self.agregar_tiempo_anios(t)
         self.agregar_tipo_garante1(g)
            
     # Metodos de agregar.
@@ -69,8 +69,8 @@ class Prestamo(object):
         self.interes = i # Guarda el interes
     
     
-    def agregar_tiempor_interes(self, t):
-        self.tiempo_interes = t # Guarda el tiempo de interes
+    def agregar_tiempo_anios(self, t):
+        self.tiempo_anios = t # Guarda el tiempo de interes
     
     
     def agregar_tipo_garante1(self, g):
@@ -94,8 +94,8 @@ class Prestamo(object):
         return self.interes # Retorna el interes
     
     
-    def obtener_tiempo_interes(self):
-        return self.tiempo_interes #Retorna el tiempo de interes
+    def obtener_tiempo_anios(self):
+        return self.tiempo_anios #Retorna el tiempo de interes
     
     
     def obtener_tipo_garante1(self):
@@ -103,8 +103,8 @@ class Prestamo(object):
 
     # Metodo de presentar datos
     def presentar_datos(self):
-        cadena = ("Datos del Beneficiario\n\n\tNombre: %s\n\tSueldo: %.2f\n\tMonto de Prestamo: %.2f\n\tInteres: %.0f%s\n\tTiempo de Interes: %d\n\tTipo de garante 1:\n"%(self.obtener_nombre_beneficiario()
-            ,self.obtener_sueldo(),self.obtener_monto_prestamo(),self.obtener_interes(),"%",self.obtener_tiempo_interes()))
+        cadena = ("Datos del Beneficiario\n\n\tNombre: %s\n\tSueldo: %.2f\n\tMonto de Prestamo: %.2f\n\tInteres: %.0f%s\n\tTiempo de Prestamo: %d %s\n\tTipo de garante 1:\n"%(self.obtener_nombre_beneficiario()
+            ,self.obtener_sueldo(),self.obtener_monto_prestamo(),self.obtener_interes(),"%",self.obtener_tiempo_anios(),"años"))
         return cadena
 
 class PrestamosAutomovil(Prestamo):
@@ -145,7 +145,7 @@ class PrestamosAutomovil(Prestamo):
     # Sobre escribimos el metodo toString.
     
     def presentar_datos(self):
-        cadena = ("%s\tTipo de Vehiculo: %s\n\tMarca del Vehiculo: %s\n\tTipo de Garante 2:\n"%(super(PrestamosAutomovil,self).presentar_datos(),
+        cadena = ("%s%s\n\n\tTipo de Vehiculo: %s\n\tMarca del Vehiculo: %s\n\tTipo de Garante 2:\n"%(super(PrestamosAutomovil,self).presentar_datos(),self.obtener_tipo_garante1().presentar_datos(),
             self.obtener_tipo_vehiculo(),self.obtener_marca()))
         return cadena
  
